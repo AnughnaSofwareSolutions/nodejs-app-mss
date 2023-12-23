@@ -6,7 +6,7 @@
   "publishConfig": {
     "registry": "http://52.66.164.46:8081/repository/nodejsrepo/"
   },
-  
+
   "scripts": {
     "server": "http-server -c-1 -p 9999",
     "start1": "nodemon app.js",
