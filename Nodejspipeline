@@ -1,1 +1,35 @@
 
+
+node{
+
+  stage('Checkout Code')
+  {
+   git credentialsId: 'e2abc8a9-60e7-4d74-833a-77a3645d73a1', url: 'https://github.com/AnughnaSofwareSolutions/nodejs-app-mss.git'
+  }
+  
+  stage('Build')
+  {
+  nodejs(nodeJSInstallationName: 'NodeJS16.20.2'){
+  sh "npm install"
+  }
+  }
+  
+  stage('SonarQubeReportExecution')
+  {
+  nodejs(nodeJSInstallationName: 'NodeJS16.20.2'){
+  sh "npm run sonar"
+  }
+  }
+  
+   stage('UploadArtifactintoNexus')
+   {
+   sh 'npm publish'
+   }
+  
+  
+   stage('RunTheNodeJsApp')
+   {
+    sh 'node app.js'
+   }
+  
+}
