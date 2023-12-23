@@ -22,10 +22,13 @@ node{
   }
   
    stage('UploadArtifactintoNexus')
+{
+   sh "runbackground.sh &"
+    
    {
    sh "npm publish"
    }
-  
+  }
   
    stage('RunTheNodeJsApp')
    {
