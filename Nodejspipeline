@@ -21,9 +21,7 @@ node{
   }
   }
   
-   stage('UploadArtifactintoNexus'){
-   sh "runbackground.sh &"
-    }
+   stage('UploadArtifactintoNexus')
    {
    sh "npm publish"
    
